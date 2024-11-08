@@ -5,16 +5,16 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Message Text to display after clicking a stone -->
+    <!-- Message Text to display before clicking a stone -->
     <TextView
         android:id="@+id/messageText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:text="Welcome to the Ancient Relics Game!"
-        android:textSize="18sp"
-        android:textAlignment="center"
-        android:visibility="gone" />
+        android:textSize="24sp"
+    android:textAlignment="center"
+    android:visibility="gone"
+    android:layout_marginBottom="24dp" />
 
     <!-- Table Layout for the stones (acts as a grid) -->
     <TableLayout
@@ -24,10 +24,7 @@
         android:layout_weight="1"
         android:stretchColumns="1"
         android:orientation="vertical"
-        android:layout_gravity="center">
-
-        <!-- Rows will be dynamically added in the Java code -->
-    </TableLayout>
+        android:layout_gravity="center"/>
 
     <!-- Container for the final message and score -->
     <TextView
@@ -35,9 +32,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
+        android:textSize="24sp"
+    android:textAlignment="center"
+    android:visibility="gone"
+    android:layout_marginTop="24dp" />
+
+    <!-- Button to go back to the main menu -->
+    <Button
+        android:id="@+id/backToMenuButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back to Menu"
         android:textSize="18sp"
-        android:textAlignment="center"
-        android:visibility="gone" />
+    android:layout_marginTop="24dp" />
 
 </LinearLayout>
 

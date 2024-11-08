@@ -1,5 +1,6 @@
 package com.example.relichunter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +21,7 @@ public class GameActivity extends AppCompatActivity {
     private ArrayList<String> items; // List to store grid items (relics, curses, nothing)
     private int relicsFound = 0;
     private int totalRelics = 7; // Number of relics to be found
+    private Button backToMenuButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,15 @@ public class GameActivity extends AppCompatActivity {
         tableLayout = findViewById(R.id.tableLayout);
         messageText = findViewById(R.id.messageText);
         finalMessageText = findViewById(R.id.finalMessageText);
+        backToMenuButton = findViewById(R.id.backToMenuButton);
+
+        // Set up the back to menu button click listener
+        backToMenuButton.setOnClickListener(v -> {
+            // Intent to go back to MainActivity (or whatever your main menu activity is)
+            Intent intent = new Intent(GameActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();  // Close this activity
+        });
 
         // Initialize the list of items (relics, curses, nothing)
         items = new ArrayList<>();
@@ -81,7 +92,8 @@ public class GameActivity extends AppCompatActivity {
     }
     private void handleItemClick(Button button) {
         String itemType = (String) button.getTag();  // Get the item type (relic, curse, nothing)
-        button.setEnabled(false); // Disable button after it's clicked
+        button.setEnabled(false); // Disable the button after it's clicked
+        button.setText(""); // Remove the "Stone X" text
 
         String message = "";
         int imageResource = 0;  // Default to 0 (no image)
@@ -146,6 +158,7 @@ public class GameActivity extends AppCompatActivity {
             finalMessageText.setVisibility(View.VISIBLE);
         }
     }
+
 
 
 
