@@ -5,33 +5,39 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Grid layout to hold all tiles -->
-    <GridLayout
-        android:id="@+id/gridLayout"
+    <!-- Message Text to display after clicking a stone -->
+    <TextView
+        android:id="@+id/messageText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Welcome to the Ancient Relics Game!"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:visibility="gone" />
+
+    <!-- Table Layout for the stones (acts as a grid) -->
+    <TableLayout
+        android:id="@+id/tableLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:columnCount="4"
-        android:rowCount="4"
-        android:orientation="horizontal" />
+        android:stretchColumns="1"
+        android:orientation="vertical"
+        android:layout_gravity="center">
 
-    <!-- Text view to show the message after revealing a relic -->
+        <!-- Rows will be dynamically added in the Java code -->
+    </TableLayout>
+
+    <!-- Container for the final message and score -->
     <TextView
-        android:id="@+id/messageTextView"
+        android:id="@+id/finalMessageText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text=""
         android:textSize="18sp"
-        android:textColor="@android:color/black"
-        android:gravity="center" />
-
-    <!-- Button to finish the game -->
-    <Button
-        android:id="@+id/endGameButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="End Game"
+        android:textAlignment="center"
         android:visibility="gone" />
 
 </LinearLayout>
+
