@@ -5,6 +5,18 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <!-- Title Text at the top, bold and brown -->
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome Relic Hunter!"
+        android:textSize="24sp"
+        android:textColor="#6A4E23"
+    android:textAlignment="center"
+    android:textStyle="bold"
+    android:layout_marginBottom="24dp" /> <!-- Space between title and next item -->
+
     <!-- Message Text to display before clicking a stone -->
     <TextView
         android:id="@+id/messageText"
@@ -12,9 +24,9 @@
         android:layout_height="wrap_content"
         android:text="Welcome to the Ancient Relics Game!"
         android:textSize="24sp"
-    android:textAlignment="center"
-    android:visibility="gone"
-    android:layout_marginBottom="24dp" />
+        android:textAlignment="center"
+        android:visibility="gone"
+        android:layout_marginBottom="24dp" />
 
     <!-- Table Layout for the stones (acts as a grid) -->
     <TableLayout
@@ -33,18 +45,23 @@
         android:layout_height="wrap_content"
         android:text=""
         android:textSize="24sp"
-    android:textAlignment="center"
-    android:visibility="gone"
-    android:layout_marginTop="24dp" />
+        android:textAlignment="center"
+        android:visibility="gone"
+        android:layout_marginTop="24dp" />
 
     <!-- Button to go back to the main menu -->
     <Button
         android:id="@+id/backToMenuButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/rounded_button_background"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
         android:text="Back to Menu"
-        android:textSize="18sp"
-    android:layout_marginTop="24dp" />
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
+
 
 </LinearLayout>
-

@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,20 +16,25 @@ import java.util.Collections;
 public class GameActivity extends AppCompatActivity {
 
     private TableLayout tableLayout;
-    private TextView messageText, finalMessageText;
-    private ArrayList<String> items; // List to store grid items (relics, curses, nothing)
-    private int relicsFound = 0;
-    private int totalRelics = 7; // Number of relics to be found
+    private TextView messageText, finalMessageText, titleText;
     private Button backToMenuButton;
+    private ArrayList<String> items;
+    private int relicsFound = 0;
+    private int cursesFound = 0;
+    private double score = 100.0; // Start score at 100%
+    private int totalRelics = 7; // Number of relics to be found
+    private int totalCurses = 3; // Number of curses in the game
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        // Initialize views
         tableLayout = findViewById(R.id.tableLayout);
         messageText = findViewById(R.id.messageText);
         finalMessageText = findViewById(R.id.finalMessageText);
+        titleText = findViewById(R.id.titleText);
         backToMenuButton = findViewById(R.id.backToMenuButton);
 
         // Set up the back to menu button click listener
@@ -77,8 +81,20 @@ public class GameActivity extends AppCompatActivity {
                 if (index >= items.size()) break;  // Prevent overflow
 
                 Button button = new Button(this);
-                button.setText("Stone " + (index + 1));
+                button.setText("");  // Don't show text, only images
                 button.setTag(items.get(index));  // Assign item type to button tag
+
+
+
+                // Make each button the same width
+                TableRow.LayoutParams params = new TableRow.LayoutParams(0,
+                        TableRow.LayoutParams.WRAP_CONTENT, 1);  // Set the weight to 1 to make all buttons equal width
+                button.setLayoutParams(params);
+
+
+
+
+
 
                 // Set up click listener for each button
                 button.setOnClickListener(v -> handleItemClick((Button) v));
@@ -90,10 +106,10 @@ public class GameActivity extends AppCompatActivity {
             tableLayout.addView(row);
         }
     }
+
     private void handleItemClick(Button button) {
         String itemType = (String) button.getTag();  // Get the item type (relic, curse, nothing)
-        button.setEnabled(false); // Disable the button after it's clicked
-        button.setText(""); // Remove the "Stone X" text
+        button.setEnabled(false); // Disable button after it's clicked
 
         String message = "";
         int imageResource = 0;  // Default to 0 (no image)
@@ -101,40 +117,56 @@ public class GameActivity extends AppCompatActivity {
         // Display different messages and set images depending on item type
         switch (itemType) {
             case "STONE_AXE":
-                message = "STONE AXE: Found by Zealsprince in Jokler’s garden. He’s not sure what to make of it...";
-                imageResource = R.drawable.axe;  // Add the actual image in your drawable folder
+                message = "STONE AXE: Found by Zealsprince in Jokler’s garden. He doesn’t know what to think about it...";
+                imageResource = R.drawable.axe;
+                relicsFound++;
+                score += 10;  // Increase score for relics
                 break;
             case "COMPASS":
-                message = "COMPASS: Used by tmtu during his last hike when he forgot his GPS at home.";
-                imageResource = R.drawable.compass;  // Add the actual image in your drawable folder
+                message = "COMPASS: Used by tmtu during his last hike.";
+                imageResource = R.drawable.compass;
+                relicsFound++;
+                score += 10;
                 break;
             case "ABACUS":
-                message = "ABACUS: Used by Chanty to count the days until the next Advent calendar starts.";
-                imageResource = R.drawable.abacus;  // Add the actual image in your drawable folder
+                message = "ABACUS: Used by Chanty to count the days.";
+                imageResource = R.drawable.abacus;
+                relicsFound++;
+                score += 10;
                 break;
             case "OIL_LAMP":
-                message = "OIL LAMP: Used by Kilmanio to get to the gym at night after forgetting his flashlight in a Hardangervidda cabin.";
-                imageResource = R.drawable.oil_lamp;  // Add the actual image in your drawable folder
+                message = "OIL LAMP: Used by Kilmanio to get to the gym.";
+                imageResource = R.drawable.oil_lamp;
+                relicsFound++;
+                score += 10;
                 break;
             case "BONE_NEEDLE":
-                message = "BONE NEEDLE: Used by APH to knit a new Godot hat and a sweater for Amon.";
-                imageResource = R.drawable.needle;  // Add the actual image in your drawable folder
+                message = "BONE NEEDLE: Used by APH to knit a sweater.";
+                imageResource = R.drawable.needle;
+                relicsFound++;
+                score += 10;
                 break;
             case "PAPYRUS":
-                message = "PAPYRUS: Used by Rapid to jot down new Spanish words when he couldn’t find his notebook.";
-                imageResource = R.drawable.papyrus;  // Add the actual image in your drawable folder
+                message = "PAPYRUS: Used by Rapid to jot down new Spanish words.";
+                imageResource = R.drawable.papyrus;
+                relicsFound++;
+                score += 10;
                 break;
             case "PREHISTORIC_SANDAL":
-                message = "PREHISTORIC SANDAL: Found by Amon behind the sofa while Dolan was playing Lethal Company.";
-                imageResource = R.drawable.sandal;  // Add the actual image in your drawable folder
+                message = "PREHISTORIC SANDAL: Found by Amon behind the sofa.";
+                imageResource = R.drawable.sandal;
+                relicsFound++;
+                score += 10;
                 break;
             case "CURSE":
                 message = "CURSE: Oops! Something bad happened!";
-                imageResource = R.drawable.hand;  // Add the curse image in your drawable folder
+                imageResource = R.drawable.hand;
+                cursesFound++;
+                score -= 5;  // Decrease score for curses
                 break;
             case "NOTHING":
                 message = "NOTHING: You found nothing... Try again!";
-                imageResource = R.drawable.nothing;  // Add the nothing image in your drawable folder
+                imageResource = R.drawable.nothing;
                 break;
         }
 
@@ -145,21 +177,17 @@ public class GameActivity extends AppCompatActivity {
         messageText.setText(message);
         messageText.setVisibility(View.VISIBLE);
 
-        // Count the relics found
-        if (itemType.equals("STONE_AXE") || itemType.equals("COMPASS") || itemType.equals("ABACUS")
-                || itemType.equals("OIL_LAMP") || itemType.equals("BONE_NEEDLE") || itemType.equals("PAPYRUS")
-                || itemType.equals("PREHISTORIC_SANDAL")) {
-            relicsFound++;
-        }
-
         // Check if all relics have been found
         if (relicsFound == totalRelics) {
-            finalMessageText.setText("Congratulations! You've found all relics! Your score: " + relicsFound + "/" + totalRelics);
+            finalMessageText.setText("Congratulations! You've found all relics! Your score: " + calculateScore() + "%");
             finalMessageText.setVisibility(View.VISIBLE);
         }
     }
 
-
-
-
+    // Method to calculate the score as a percentage
+    private double calculateScore() {
+        double totalItems = relicsFound + cursesFound;
+        double scorePercentage = (relicsFound * 10) - (cursesFound * 5);
+        return Math.max(scorePercentage, 0); // Ensure score doesn't go negative
+    }
 }
