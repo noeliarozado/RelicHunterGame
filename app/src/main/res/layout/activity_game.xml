@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Grid layout to hold all tiles -->
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:columnCount="4"
+        android:rowCount="4"
+        android:orientation="horizontal" />
+
+    <!-- Text view to show the message after revealing a relic -->
+    <TextView
+        android:id="@+id/messageTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text=""
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:gravity="center" />
+
+    <!-- Button to finish the game -->
+    <Button
+        android:id="@+id/endGameButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="End Game"
+        android:visibility="gone" />
+
+</LinearLayout>
