@@ -4,31 +4,28 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class CreditsActivity extends AppCompatActivity {
+public class InstructionsActivity extends AppCompatActivity {
 
-    private TextView creditsTitle, thanksAPH, thanksTeam;
+    private TextView titleText, instructionsText;
     private Button backToMenuButton;
-    private ImageView gameJamImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_credits);
+        setContentView(R.layout.activity_instructions);
 
-        creditsTitle = findViewById(R.id.creditsTitle);
-        thanksAPH = findViewById(R.id.thanksAPH);
-        thanksTeam = findViewById(R.id.thanksTeam);
+        titleText = findViewById(R.id.titleText);
+        instructionsText = findViewById(R.id.instructionsText);
         backToMenuButton = findViewById(R.id.backToMenuButton);
-        gameJamImage = findViewById(R.id.gameJamImage);
 
         backToMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainMenuIntent = new Intent(CreditsActivity.this, MainActivity.class);
+                Intent mainMenuIntent = new Intent(InstructionsActivity.this, MainActivity.class);
                 startActivity(mainMenuIntent);
                 finish();
             }

@@ -1,0 +1,5 @@
+<!-- res/drawable/btn_background_peach.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFC4A3" /> <!-- Light pastel peach color -->
+    <corners android:radius="16dp" /> <!-- Rounded corners -->
+</shape>

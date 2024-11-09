@@ -1,36 +1,57 @@
-<!-- res/layout/activity_main.xml -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#252323"
     android:padding="16dp">
 
-    <!-- Game Title -->
-    <TextView
-        android:id="@+id/gameTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Relic Hunter"
-        android:textSize="32sp"
+    <ImageView
+        android:id="@+id/titleImage"
+        android:layout_width="288dp"
+        android:layout_height="207dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"/>
+        android:layout_marginTop="60dp"
+        android:src="@drawable/portada" />
 
-    <!-- Start Game Button -->
+    <Button
+        android:id="@+id/instructionsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleImage"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/rounded_button_background"
+        android:backgroundTint="#FFC4A3"
+        android:paddingVertical="20dp"
+        android:text="INSTRUCTIONS"
+        android:textSize="20sp" />
+
     <Button
         android:id="@+id/startGameButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Start Game"
-        android:layout_below="@id/gameTitle"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"/>
+        android:layout_below="@id/instructionsButton"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_button_background"
+        android:backgroundTint="#B0E57C"
+        android:paddingVertical="20dp"
+        android:text="PLAY"
+        android:textSize="20sp" />
 
-    <!-- Credits Button -->
     <Button
         android:id="@+id/creditsButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Credits"
         android:layout_below="@id/startGameButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_button_background"
+        android:backgroundTint="#A4C2F4"
+        android:paddingVertical="20dp"
+        android:text="CREDITS"
+        android:textSize="20sp" />
+
 </RelativeLayout>

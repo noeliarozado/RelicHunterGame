@@ -10,17 +10,17 @@ public class MainActivity extends AppCompatActivity {
 
     private Button startGameButton;
     private Button creditsButton;
+    private Button instructionsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Initialize buttons
         startGameButton = findViewById(R.id.startGameButton);
         creditsButton = findViewById(R.id.creditsButton);
+        instructionsButton = findViewById(R.id.instructionsButton);
 
-        // Set up Start Game button listener
         startGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,12 +29,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Set up Credits button listener
         creditsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent creditsIntent = new Intent(MainActivity.this, CreditsActivity.class);
                 startActivity(creditsIntent);
+            }
+        });
+
+        instructionsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent instructionsIntent = new Intent(MainActivity.this, InstructionsActivity.class);
+                startActivity(instructionsIntent);
             }
         });
     }

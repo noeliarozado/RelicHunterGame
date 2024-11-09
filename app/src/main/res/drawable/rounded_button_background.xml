@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Set the background color for the button -->
-    <solid android:color="#D2B48C" /> <!-- Sandy Beige Background -->
+    <solid android:color="#D2B48C" />
 
-    <!-- Define the corner radius for rounded corners -->
-    <corners android:radius="12dp" /> <!-- Adjust the radius as desired -->
+    <corners android:radius="12dp" />
 </shape>

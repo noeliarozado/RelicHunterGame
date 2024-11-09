@@ -5,51 +5,46 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Title Text at the top, bold and brown -->
     <TextView
         android:id="@+id/titleText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome Relic Hunter!"
-        android:textSize="24sp"
+        android:layout_marginBottom="24dp"
+        android:text="Greetings, Relic Hunter!"
+        android:textAlignment="center"
         android:textColor="#6A4E23"
-    android:textAlignment="center"
-    android:textStyle="bold"
-    android:layout_marginBottom="24dp" /> <!-- Space between title and next item -->
+        android:textSize="34sp"
+        android:textStyle="bold" />
 
-    <!-- Message Text to display before clicking a stone -->
     <TextView
         android:id="@+id/messageText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome to the Ancient Relics Game!"
-        android:textSize="24sp"
+        android:layout_marginBottom="24dp"
+        android:text="Welcome to the Ancient Relics game!"
         android:textAlignment="center"
-        android:visibility="gone"
-        android:layout_marginBottom="24dp" />
+        android:textSize="30sp"
+        android:visibility="gone" />
 
-    <!-- Table Layout for the stones (acts as a grid) -->
     <TableLayout
         android:id="@+id/tableLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_gravity="center"
         android:layout_weight="1"
-        android:stretchColumns="1"
         android:orientation="vertical"
-        android:layout_gravity="center"/>
+        android:stretchColumns="1" />
 
-    <!-- Container for the final message and score -->
     <TextView
         android:id="@+id/finalMessageText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text=""
-        android:textSize="24sp"
         android:textAlignment="center"
-        android:visibility="gone"
-        android:layout_marginTop="24dp" />
+        android:textSize="24sp"
+        android:visibility="gone" />
 
-    <!-- Button to go back to the main menu -->
     <Button
         android:id="@+id/backToMenuButton"
         android:layout_width="wrap_content"
@@ -57,11 +52,11 @@
         android:layout_gravity="center"
         android:layout_marginTop="24dp"
         android:background="@drawable/rounded_button_background"
+        android:backgroundTint="#D2B48C"
         android:paddingHorizontal="16dp"
         android:paddingVertical="8dp"
-        android:text="Back to Menu"
+        android:text="Back"
         android:textColor="#FFFFFF"
         android:textSize="18sp" />
-
 
 </LinearLayout>
