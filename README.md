@@ -1,6 +1,8 @@
 # RELIC HUNTER
 
-Game created for the *Fishstick Jam 2*.
+Game created for the [**Fishstick Jam 2**](https://itch.io/jam/the-fishstick-jam-2).
+
+[Executable](https://www.mediafire.com/file/ggx3zr981ku7oxh/Sweet_Steps.zip/file).
 
 ## GAME DESCRIPTION
 
